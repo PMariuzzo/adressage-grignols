@@ -1,0 +1,2971 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width">
+        <meta name="mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <link rel="stylesheet" href="css/leaflet.css">
+        <link rel="stylesheet" href="css/qgis2web.css"><link rel="stylesheet" href="css/fontawesome-all.min.css">
+        <style>
+        #map {
+            width: 1504px;
+            height: 827px;
+        }
+        </style>
+        <title></title>
+    </head>
+    <body>
+        <div id="map">
+        </div>
+        <script src="js/qgis2web_expressions.js"></script>
+        <script src="js/leaflet.js"></script>
+        <script src="js/multi-style-layer.js"></script>
+        <script src="js/leaflet.rotatedMarker.js"></script>
+        <script src="js/leaflet.pattern.js"></script>
+        <script src="js/leaflet-hash.js"></script>
+        <script src="js/Autolinker.min.js"></script>
+        <script src="js/rbush.min.js"></script>
+        <script src="js/labelgun.min.js"></script>
+        <script src="js/labels.js"></script>
+        <script src="data/frontirescommunales_0.js"></script>
+        <script src="data/Voiesfinales_1.js"></script>
+        <script src="data/panneaudesignalisation_Voiesfinales_2.js"></script>
+        <script>
+        var map = L.map('map', {
+            zoomControl:true, maxZoom:28, minZoom:1
+        }).fitBounds([[45.06736419751295,0.5044987859891594],[45.08505255728256,0.5501021592651069]]);
+        var hash = new L.Hash(map);
+        map.attributionControl.setPrefix('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a> &middot; <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> &middot; <a href="https://qgis.org">QGIS</a>');
+        var bounds_group = new L.featureGroup([]);
+        function setBounds() {
+        }
+        function pop_frontirescommunales_0(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['qc_id'] !== null ? Autolinker.link(feature.properties['qc_id'].toLocaleString(), {truncate: {length: 30, location: 'smart'}}) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['full_id'] !== null ? Autolinker.link(feature.properties['full_id'].toLocaleString(), {truncate: {length: 30, location: 'smart'}}) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['osm_id'] !== null ? Autolinker.link(feature.properties['osm_id'].toLocaleString(), {truncate: {length: 30, location: 'smart'}}) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['osm_type'] !== null ? Autolinker.link(feature.properties['osm_type'].toLocaleString(), {truncate: {length: 30, location: 'smart'}}) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['admin_leve'] !== null ? Autolinker.link(feature.properties['admin_leve'].toLocaleString(), {truncate: {length: 30, location: 'smart'}}) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['name'] !== null ? Autolinker.link(feature.properties['name'].toLocaleString(), {truncate: {length: 30, location: 'smart'}}) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['addr_postc'] !== null ? Autolinker.link(feature.properties['addr_postc'].toLocaleString(), {truncate: {length: 30, location: 'smart'}}) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['wikipedia'] !== null ? Autolinker.link(feature.properties['wikipedia'].toLocaleString(), {truncate: {length: 30, location: 'smart'}}) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['wikidata'] !== null ? Autolinker.link(feature.properties['wikidata'].toLocaleString(), {truncate: {length: 30, location: 'smart'}}) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['boundary'] !== null ? Autolinker.link(feature.properties['boundary'].toLocaleString(), {truncate: {length: 30, location: 'smart'}}) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['type'] !== null ? Autolinker.link(feature.properties['type'].toLocaleString(), {truncate: {length: 30, location: 'smart'}}) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['ref_insee'] !== null ? Autolinker.link(feature.properties['ref_insee'].toLocaleString(), {truncate: {length: 30, location: 'smart'}}) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_frontirescommunales_0_0() {
+            return {
+                pane: 'pane_frontirescommunales_0',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(181,176,189,1.0)',
+                interactive: true,
+            }
+        }
+        map.createPane('pane_frontirescommunales_0');
+        map.getPane('pane_frontirescommunales_0').style.zIndex = 400;
+        map.getPane('pane_frontirescommunales_0').style['mix-blend-mode'] = 'normal';
+        var layer_frontirescommunales_0 = new L.geoJson(json_frontirescommunales_0, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_frontirescommunales_0',
+            layerName: 'layer_frontirescommunales_0',
+            pane: 'pane_frontirescommunales_0',
+            onEachFeature: pop_frontirescommunales_0,
+            style: style_frontirescommunales_0_0,
+        });
+        bounds_group.addLayer(layer_frontirescommunales_0);
+        map.addLayer(layer_frontirescommunales_0);
+        function pop_Voiesfinales_1(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['clef_prima'] !== null ? Autolinker.link(feature.properties['clef_prima'].toLocaleString(), {truncate: {length: 30, location: 'smart'}}) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['nom_comple'] !== null ? Autolinker.link(feature.properties['nom_comple'].toLocaleString(), {truncate: {length: 30, location: 'smart'}}) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['typologie_'] !== null ? Autolinker.link(feature.properties['typologie_'].toLocaleString(), {truncate: {length: 30, location: 'smart'}}) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['voie_nom'] !== null ? Autolinker.link(feature.properties['voie_nom'].toLocaleString(), {truncate: {length: 30, location: 'smart'}}) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['commune_no'] !== null ? Autolinker.link(feature.properties['commune_no'].toLocaleString(), {truncate: {length: 30, location: 'smart'}}) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['code_insee'] !== null ? Autolinker.link(feature.properties['code_insee'].toLocaleString(), {truncate: {length: 30, location: 'smart'}}) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['regime_fon'] !== null ? Autolinker.link(feature.properties['regime_fon'].toLocaleString(), {truncate: {length: 30, location: 'smart'}}) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['type_numer'] !== null ? Autolinker.link(feature.properties['type_numer'].toLocaleString(), {truncate: {length: 30, location: 'smart'}}) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['isigeo_cre'] !== null ? Autolinker.link(feature.properties['isigeo_cre'].toLocaleString(), {truncate: {length: 30, location: 'smart'}}) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['isigeo_upd'] !== null ? Autolinker.link(feature.properties['isigeo_upd'].toLocaleString(), {truncate: {length: 30, location: 'smart'}}) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['_timestamp'] !== null ? Autolinker.link(feature.properties['_timestamp'].toLocaleString(), {truncate: {length: 30, location: 'smart'}}) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_Voiesfinales_1_0(feature) {
+            switch(String(feature.properties['clef_prima'])) {
+                case '19149':
+                    return {
+                pane: 'pane_Voiesfinales_1',
+                opacity: 1,
+                color: 'rgba(76,38,0,1.0)',
+                dashArray: '',
+                lineCap: 'round',
+                lineJoin: 'round',
+                weight: 7.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case '19151':
+                    return {
+                pane: 'pane_Voiesfinales_1',
+                opacity: 1,
+                color: 'rgba(76,38,0,1.0)',
+                dashArray: '',
+                lineCap: 'round',
+                lineJoin: 'round',
+                weight: 7.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case '19152':
+                    return {
+                pane: 'pane_Voiesfinales_1',
+                opacity: 1,
+                color: 'rgba(76,38,0,1.0)',
+                dashArray: '',
+                lineCap: 'round',
+                lineJoin: 'round',
+                weight: 7.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case '19153':
+                    return {
+                pane: 'pane_Voiesfinales_1',
+                opacity: 1,
+                color: 'rgba(76,38,0,1.0)',
+                dashArray: '',
+                lineCap: 'round',
+                lineJoin: 'round',
+                weight: 7.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case '19154':
+                    return {
+                pane: 'pane_Voiesfinales_1',
+                opacity: 1,
+                color: 'rgba(76,38,0,1.0)',
+                dashArray: '',
+                lineCap: 'round',
+                lineJoin: 'round',
+                weight: 7.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case '19157':
+                    return {
+                pane: 'pane_Voiesfinales_1',
+                opacity: 1,
+                color: 'rgba(76,38,0,1.0)',
+                dashArray: '',
+                lineCap: 'round',
+                lineJoin: 'round',
+                weight: 7.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case '19158':
+                    return {
+                pane: 'pane_Voiesfinales_1',
+                opacity: 1,
+                color: 'rgba(76,38,0,1.0)',
+                dashArray: '',
+                lineCap: 'round',
+                lineJoin: 'round',
+                weight: 7.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case '19159':
+                    return {
+                pane: 'pane_Voiesfinales_1',
+                opacity: 1,
+                color: 'rgba(76,38,0,1.0)',
+                dashArray: '',
+                lineCap: 'round',
+                lineJoin: 'round',
+                weight: 7.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case '19160':
+                    return {
+                pane: 'pane_Voiesfinales_1',
+                opacity: 1,
+                color: 'rgba(76,38,0,1.0)',
+                dashArray: '',
+                lineCap: 'round',
+                lineJoin: 'round',
+                weight: 7.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case '19161':
+                    return {
+                pane: 'pane_Voiesfinales_1',
+                opacity: 1,
+                color: 'rgba(76,38,0,1.0)',
+                dashArray: '',
+                lineCap: 'round',
+                lineJoin: 'round',
+                weight: 7.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case '19163':
+                    return {
+                pane: 'pane_Voiesfinales_1',
+                opacity: 1,
+                color: 'rgba(76,38,0,1.0)',
+                dashArray: '',
+                lineCap: 'round',
+                lineJoin: 'round',
+                weight: 7.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case '19164':
+                    return {
+                pane: 'pane_Voiesfinales_1',
+                opacity: 1,
+                color: 'rgba(76,38,0,1.0)',
+                dashArray: '',
+                lineCap: 'round',
+                lineJoin: 'round',
+                weight: 7.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case '19165':
+                    return {
+                pane: 'pane_Voiesfinales_1',
+                opacity: 1,
+                color: 'rgba(76,38,0,1.0)',
+                dashArray: '',
+                lineCap: 'round',
+                lineJoin: 'round',
+                weight: 7.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case '19166':
+                    return {
+                pane: 'pane_Voiesfinales_1',
+                opacity: 1,
+                color: 'rgba(76,38,0,1.0)',
+                dashArray: '',
+                lineCap: 'round',
+                lineJoin: 'round',
+                weight: 7.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case '19168':
+                    return {
+                pane: 'pane_Voiesfinales_1',
+                opacity: 1,
+                color: 'rgba(76,38,0,1.0)',
+                dashArray: '',
+                lineCap: 'round',
+                lineJoin: 'round',
+                weight: 7.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case '19169':
+                    return {
+                pane: 'pane_Voiesfinales_1',
+                opacity: 1,
+                color: 'rgba(76,38,0,1.0)',
+                dashArray: '',
+                lineCap: 'round',
+                lineJoin: 'round',
+                weight: 7.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case '19170':
+                    return {
+                pane: 'pane_Voiesfinales_1',
+                opacity: 1,
+                color: 'rgba(76,38,0,1.0)',
+                dashArray: '',
+                lineCap: 'round',
+                lineJoin: 'round',
+                weight: 7.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case '19171':
+                    return {
+                pane: 'pane_Voiesfinales_1',
+                opacity: 1,
+                color: 'rgba(76,38,0,1.0)',
+                dashArray: '',
+                lineCap: 'round',
+                lineJoin: 'round',
+                weight: 7.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case '19172':
+                    return {
+                pane: 'pane_Voiesfinales_1',
+                opacity: 1,
+                color: 'rgba(76,38,0,1.0)',
+                dashArray: '',
+                lineCap: 'round',
+                lineJoin: 'round',
+                weight: 7.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case '19173':
+                    return {
+                pane: 'pane_Voiesfinales_1',
+                opacity: 1,
+                color: 'rgba(76,38,0,1.0)',
+                dashArray: '',
+                lineCap: 'round',
+                lineJoin: 'round',
+                weight: 7.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case '19174':
+                    return {
+                pane: 'pane_Voiesfinales_1',
+                opacity: 1,
+                color: 'rgba(76,38,0,1.0)',
+                dashArray: '',
+                lineCap: 'round',
+                lineJoin: 'round',
+                weight: 7.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case '19180':
+                    return {
+                pane: 'pane_Voiesfinales_1',
+                opacity: 1,
+                color: 'rgba(76,38,0,1.0)',
+                dashArray: '',
+                lineCap: 'round',
+                lineJoin: 'round',
+                weight: 7.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case '19181':
+                    return {
+                pane: 'pane_Voiesfinales_1',
+                opacity: 1,
+                color: 'rgba(76,38,0,1.0)',
+                dashArray: '',
+                lineCap: 'round',
+                lineJoin: 'round',
+                weight: 7.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case '19183':
+                    return {
+                pane: 'pane_Voiesfinales_1',
+                opacity: 1,
+                color: 'rgba(76,38,0,1.0)',
+                dashArray: '',
+                lineCap: 'round',
+                lineJoin: 'round',
+                weight: 7.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case '19184':
+                    return {
+                pane: 'pane_Voiesfinales_1',
+                opacity: 1,
+                color: 'rgba(76,38,0,1.0)',
+                dashArray: '',
+                lineCap: 'round',
+                lineJoin: 'round',
+                weight: 7.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case '19189':
+                    return {
+                pane: 'pane_Voiesfinales_1',
+                opacity: 1,
+                color: 'rgba(76,38,0,1.0)',
+                dashArray: '',
+                lineCap: 'round',
+                lineJoin: 'round',
+                weight: 7.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case '19190':
+                    return {
+                pane: 'pane_Voiesfinales_1',
+                opacity: 1,
+                color: 'rgba(76,38,0,1.0)',
+                dashArray: '',
+                lineCap: 'round',
+                lineJoin: 'round',
+                weight: 7.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case '19191':
+                    return {
+                pane: 'pane_Voiesfinales_1',
+                opacity: 1,
+                color: 'rgba(76,38,0,1.0)',
+                dashArray: '',
+                lineCap: 'round',
+                lineJoin: 'round',
+                weight: 7.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case '19192':
+                    return {
+                pane: 'pane_Voiesfinales_1',
+                opacity: 1,
+                color: 'rgba(76,38,0,1.0)',
+                dashArray: '',
+                lineCap: 'round',
+                lineJoin: 'round',
+                weight: 7.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case '19193':
+                    return {
+                pane: 'pane_Voiesfinales_1',
+                opacity: 1,
+                color: 'rgba(76,38,0,1.0)',
+                dashArray: '',
+                lineCap: 'round',
+                lineJoin: 'round',
+                weight: 7.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case '19194':
+                    return {
+                pane: 'pane_Voiesfinales_1',
+                opacity: 1,
+                color: 'rgba(76,38,0,1.0)',
+                dashArray: '',
+                lineCap: 'round',
+                lineJoin: 'round',
+                weight: 7.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case '19195':
+                    return {
+                pane: 'pane_Voiesfinales_1',
+                opacity: 1,
+                color: 'rgba(76,38,0,1.0)',
+                dashArray: '',
+                lineCap: 'round',
+                lineJoin: 'round',
+                weight: 7.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case '19199':
+                    return {
+                pane: 'pane_Voiesfinales_1',
+                opacity: 1,
+                color: 'rgba(76,38,0,1.0)',
+                dashArray: '',
+                lineCap: 'round',
+                lineJoin: 'round',
+                weight: 7.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case '19200':
+                    return {
+                pane: 'pane_Voiesfinales_1',
+                opacity: 1,
+                color: 'rgba(76,38,0,1.0)',
+                dashArray: '',
+                lineCap: 'round',
+                lineJoin: 'round',
+                weight: 7.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case '19204':
+                    return {
+                pane: 'pane_Voiesfinales_1',
+                opacity: 1,
+                color: 'rgba(76,38,0,1.0)',
+                dashArray: '',
+                lineCap: 'round',
+                lineJoin: 'round',
+                weight: 7.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case '19205':
+                    return {
+                pane: 'pane_Voiesfinales_1',
+                opacity: 1,
+                color: 'rgba(76,38,0,1.0)',
+                dashArray: '',
+                lineCap: 'round',
+                lineJoin: 'round',
+                weight: 7.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case '19206':
+                    return {
+                pane: 'pane_Voiesfinales_1',
+                opacity: 1,
+                color: 'rgba(76,38,0,1.0)',
+                dashArray: '',
+                lineCap: 'round',
+                lineJoin: 'round',
+                weight: 7.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case '19207':
+                    return {
+                pane: 'pane_Voiesfinales_1',
+                opacity: 1,
+                color: 'rgba(76,38,0,1.0)',
+                dashArray: '',
+                lineCap: 'round',
+                lineJoin: 'round',
+                weight: 7.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case '19208':
+                    return {
+                pane: 'pane_Voiesfinales_1',
+                opacity: 1,
+                color: 'rgba(76,38,0,1.0)',
+                dashArray: '',
+                lineCap: 'round',
+                lineJoin: 'round',
+                weight: 7.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case '19210':
+                    return {
+                pane: 'pane_Voiesfinales_1',
+                opacity: 1,
+                color: 'rgba(76,38,0,1.0)',
+                dashArray: '',
+                lineCap: 'round',
+                lineJoin: 'round',
+                weight: 7.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case '19211':
+                    return {
+                pane: 'pane_Voiesfinales_1',
+                opacity: 1,
+                color: 'rgba(76,38,0,1.0)',
+                dashArray: '',
+                lineCap: 'round',
+                lineJoin: 'round',
+                weight: 7.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case '19212':
+                    return {
+                pane: 'pane_Voiesfinales_1',
+                opacity: 1,
+                color: 'rgba(76,38,0,1.0)',
+                dashArray: '',
+                lineCap: 'round',
+                lineJoin: 'round',
+                weight: 7.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case '19213':
+                    return {
+                pane: 'pane_Voiesfinales_1',
+                opacity: 1,
+                color: 'rgba(76,38,0,1.0)',
+                dashArray: '',
+                lineCap: 'round',
+                lineJoin: 'round',
+                weight: 7.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case '19215':
+                    return {
+                pane: 'pane_Voiesfinales_1',
+                opacity: 1,
+                color: 'rgba(76,38,0,1.0)',
+                dashArray: '',
+                lineCap: 'round',
+                lineJoin: 'round',
+                weight: 7.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case '19216':
+                    return {
+                pane: 'pane_Voiesfinales_1',
+                opacity: 1,
+                color: 'rgba(76,38,0,1.0)',
+                dashArray: '',
+                lineCap: 'round',
+                lineJoin: 'round',
+                weight: 7.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case '19218':
+                    return {
+                pane: 'pane_Voiesfinales_1',
+                opacity: 1,
+                color: 'rgba(76,38,0,1.0)',
+                dashArray: '',
+                lineCap: 'round',
+                lineJoin: 'round',
+                weight: 7.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case '19220':
+                    return {
+                pane: 'pane_Voiesfinales_1',
+                opacity: 1,
+                color: 'rgba(76,38,0,1.0)',
+                dashArray: '',
+                lineCap: 'round',
+                lineJoin: 'round',
+                weight: 7.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case '19222':
+                    return {
+                pane: 'pane_Voiesfinales_1',
+                opacity: 1,
+                color: 'rgba(76,38,0,1.0)',
+                dashArray: '',
+                lineCap: 'round',
+                lineJoin: 'round',
+                weight: 7.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case '19224':
+                    return {
+                pane: 'pane_Voiesfinales_1',
+                opacity: 1,
+                color: 'rgba(76,38,0,1.0)',
+                dashArray: '',
+                lineCap: 'round',
+                lineJoin: 'round',
+                weight: 7.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case '19225':
+                    return {
+                pane: 'pane_Voiesfinales_1',
+                opacity: 1,
+                color: 'rgba(76,38,0,1.0)',
+                dashArray: '',
+                lineCap: 'round',
+                lineJoin: 'round',
+                weight: 7.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case '19226':
+                    return {
+                pane: 'pane_Voiesfinales_1',
+                opacity: 1,
+                color: 'rgba(76,38,0,1.0)',
+                dashArray: '',
+                lineCap: 'round',
+                lineJoin: 'round',
+                weight: 7.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case '19227':
+                    return {
+                pane: 'pane_Voiesfinales_1',
+                opacity: 1,
+                color: 'rgba(76,38,0,1.0)',
+                dashArray: '',
+                lineCap: 'round',
+                lineJoin: 'round',
+                weight: 7.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case '19228':
+                    return {
+                pane: 'pane_Voiesfinales_1',
+                opacity: 1,
+                color: 'rgba(76,38,0,1.0)',
+                dashArray: '',
+                lineCap: 'round',
+                lineJoin: 'round',
+                weight: 7.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case '19229':
+                    return {
+                pane: 'pane_Voiesfinales_1',
+                opacity: 1,
+                color: 'rgba(76,38,0,1.0)',
+                dashArray: '',
+                lineCap: 'round',
+                lineJoin: 'round',
+                weight: 7.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case '19230':
+                    return {
+                pane: 'pane_Voiesfinales_1',
+                opacity: 1,
+                color: 'rgba(76,38,0,1.0)',
+                dashArray: '',
+                lineCap: 'round',
+                lineJoin: 'round',
+                weight: 7.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case '19231':
+                    return {
+                pane: 'pane_Voiesfinales_1',
+                opacity: 1,
+                color: 'rgba(76,38,0,1.0)',
+                dashArray: '',
+                lineCap: 'round',
+                lineJoin: 'round',
+                weight: 7.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case '19234':
+                    return {
+                pane: 'pane_Voiesfinales_1',
+                opacity: 1,
+                color: 'rgba(76,38,0,1.0)',
+                dashArray: '',
+                lineCap: 'round',
+                lineJoin: 'round',
+                weight: 7.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case '19235':
+                    return {
+                pane: 'pane_Voiesfinales_1',
+                opacity: 1,
+                color: 'rgba(76,38,0,1.0)',
+                dashArray: '',
+                lineCap: 'round',
+                lineJoin: 'round',
+                weight: 7.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case '19267':
+                    return {
+                pane: 'pane_Voiesfinales_1',
+                opacity: 1,
+                color: 'rgba(76,38,0,1.0)',
+                dashArray: '',
+                lineCap: 'round',
+                lineJoin: 'round',
+                weight: 7.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case '19269':
+                    return {
+                pane: 'pane_Voiesfinales_1',
+                opacity: 1,
+                color: 'rgba(76,38,0,1.0)',
+                dashArray: '',
+                lineCap: 'round',
+                lineJoin: 'round',
+                weight: 7.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case '19308':
+                    return {
+                pane: 'pane_Voiesfinales_1',
+                opacity: 1,
+                color: 'rgba(76,38,0,1.0)',
+                dashArray: '',
+                lineCap: 'round',
+                lineJoin: 'round',
+                weight: 7.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case '19311':
+                    return {
+                pane: 'pane_Voiesfinales_1',
+                opacity: 1,
+                color: 'rgba(76,38,0,1.0)',
+                dashArray: '',
+                lineCap: 'round',
+                lineJoin: 'round',
+                weight: 7.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case '19628':
+                    return {
+                pane: 'pane_Voiesfinales_1',
+                opacity: 1,
+                color: 'rgba(76,38,0,1.0)',
+                dashArray: '',
+                lineCap: 'round',
+                lineJoin: 'round',
+                weight: 7.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case '19629':
+                    return {
+                pane: 'pane_Voiesfinales_1',
+                opacity: 1,
+                color: 'rgba(76,38,0,1.0)',
+                dashArray: '',
+                lineCap: 'round',
+                lineJoin: 'round',
+                weight: 7.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case '19630':
+                    return {
+                pane: 'pane_Voiesfinales_1',
+                opacity: 1,
+                color: 'rgba(76,38,0,1.0)',
+                dashArray: '',
+                lineCap: 'round',
+                lineJoin: 'round',
+                weight: 7.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case '19631':
+                    return {
+                pane: 'pane_Voiesfinales_1',
+                opacity: 1,
+                color: 'rgba(76,38,0,1.0)',
+                dashArray: '',
+                lineCap: 'round',
+                lineJoin: 'round',
+                weight: 7.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case '19633':
+                    return {
+                pane: 'pane_Voiesfinales_1',
+                opacity: 1,
+                color: 'rgba(76,38,0,1.0)',
+                dashArray: '',
+                lineCap: 'round',
+                lineJoin: 'round',
+                weight: 7.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case '19634':
+                    return {
+                pane: 'pane_Voiesfinales_1',
+                opacity: 1,
+                color: 'rgba(76,38,0,1.0)',
+                dashArray: '',
+                lineCap: 'round',
+                lineJoin: 'round',
+                weight: 7.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case '19636':
+                    return {
+                pane: 'pane_Voiesfinales_1',
+                opacity: 1,
+                color: 'rgba(76,38,0,1.0)',
+                dashArray: '',
+                lineCap: 'round',
+                lineJoin: 'round',
+                weight: 7.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case '19638':
+                    return {
+                pane: 'pane_Voiesfinales_1',
+                opacity: 1,
+                color: 'rgba(76,38,0,1.0)',
+                dashArray: '',
+                lineCap: 'round',
+                lineJoin: 'round',
+                weight: 7.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case '20874':
+                    return {
+                pane: 'pane_Voiesfinales_1',
+                opacity: 1,
+                color: 'rgba(76,38,0,1.0)',
+                dashArray: '',
+                lineCap: 'round',
+                lineJoin: 'round',
+                weight: 7.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case '20877':
+                    return {
+                pane: 'pane_Voiesfinales_1',
+                opacity: 1,
+                color: 'rgba(76,38,0,1.0)',
+                dashArray: '',
+                lineCap: 'round',
+                lineJoin: 'round',
+                weight: 7.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case '20878':
+                    return {
+                pane: 'pane_Voiesfinales_1',
+                opacity: 1,
+                color: 'rgba(76,38,0,1.0)',
+                dashArray: '',
+                lineCap: 'round',
+                lineJoin: 'round',
+                weight: 7.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case '21543':
+                    return {
+                pane: 'pane_Voiesfinales_1',
+                opacity: 1,
+                color: 'rgba(76,38,0,1.0)',
+                dashArray: '',
+                lineCap: 'round',
+                lineJoin: 'round',
+                weight: 7.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case '21801':
+                    return {
+                pane: 'pane_Voiesfinales_1',
+                opacity: 1,
+                color: 'rgba(76,38,0,1.0)',
+                dashArray: '',
+                lineCap: 'round',
+                lineJoin: 'round',
+                weight: 7.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case '21802':
+                    return {
+                pane: 'pane_Voiesfinales_1',
+                opacity: 1,
+                color: 'rgba(76,38,0,1.0)',
+                dashArray: '',
+                lineCap: 'round',
+                lineJoin: 'round',
+                weight: 7.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case '21803':
+                    return {
+                pane: 'pane_Voiesfinales_1',
+                opacity: 1,
+                color: 'rgba(76,38,0,1.0)',
+                dashArray: '',
+                lineCap: 'round',
+                lineJoin: 'round',
+                weight: 7.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case '21804':
+                    return {
+                pane: 'pane_Voiesfinales_1',
+                opacity: 1,
+                color: 'rgba(76,38,0,1.0)',
+                dashArray: '',
+                lineCap: 'round',
+                lineJoin: 'round',
+                weight: 7.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case '4499':
+                    return {
+                pane: 'pane_Voiesfinales_1',
+                opacity: 1,
+                color: 'rgba(76,38,0,1.0)',
+                dashArray: '',
+                lineCap: 'round',
+                lineJoin: 'round',
+                weight: 7.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case '4511':
+                    return {
+                pane: 'pane_Voiesfinales_1',
+                opacity: 1,
+                color: 'rgba(76,38,0,1.0)',
+                dashArray: '',
+                lineCap: 'round',
+                lineJoin: 'round',
+                weight: 7.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case '812':
+                    return {
+                pane: 'pane_Voiesfinales_1',
+                opacity: 1,
+                color: 'rgba(76,38,0,1.0)',
+                dashArray: '',
+                lineCap: 'round',
+                lineJoin: 'round',
+                weight: 7.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case '814':
+                    return {
+                pane: 'pane_Voiesfinales_1',
+                opacity: 1,
+                color: 'rgba(76,38,0,1.0)',
+                dashArray: '',
+                lineCap: 'round',
+                lineJoin: 'round',
+                weight: 7.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case '8968':
+                    return {
+                pane: 'pane_Voiesfinales_1',
+                opacity: 1,
+                color: 'rgba(76,38,0,1.0)',
+                dashArray: '',
+                lineCap: 'round',
+                lineJoin: 'round',
+                weight: 7.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                default:
+                    return {
+                pane: 'pane_Voiesfinales_1',
+                opacity: 1,
+                color: 'rgba(76,38,0,1.0)',
+                dashArray: '',
+                lineCap: 'round',
+                lineJoin: 'round',
+                weight: 7.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+            }
+        }
+        function style_Voiesfinales_1_1(feature) {
+            switch(String(feature.properties['clef_prima'])) {
+                case '19149':
+                    return {
+                pane: 'pane_Voiesfinales_1',
+                opacity: 1,
+                color: 'rgba(105,200,16,1.0)',
+                dashArray: '',
+                lineCap: 'round',
+                lineJoin: 'round',
+                weight: 7.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case '19151':
+                    return {
+                pane: 'pane_Voiesfinales_1',
+                opacity: 1,
+                color: 'rgba(40,206,79,1.0)',
+                dashArray: '',
+                lineCap: 'round',
+                lineJoin: 'round',
+                weight: 7.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case '19152':
+                    return {
+                pane: 'pane_Voiesfinales_1',
+                opacity: 1,
+                color: 'rgba(200,65,178,1.0)',
+                dashArray: '',
+                lineCap: 'round',
+                lineJoin: 'round',
+                weight: 7.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case '19153':
+                    return {
+                pane: 'pane_Voiesfinales_1',
+                opacity: 1,
+                color: 'rgba(63,147,215,1.0)',
+                dashArray: '',
+                lineCap: 'round',
+                lineJoin: 'round',
+                weight: 7.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case '19154':
+                    return {
+                pane: 'pane_Voiesfinales_1',
+                opacity: 1,
+                color: 'rgba(86,221,203,1.0)',
+                dashArray: '',
+                lineCap: 'round',
+                lineJoin: 'round',
+                weight: 7.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case '19157':
+                    return {
+                pane: 'pane_Voiesfinales_1',
+                opacity: 1,
+                color: 'rgba(201,60,197,1.0)',
+                dashArray: '',
+                lineCap: 'round',
+                lineJoin: 'round',
+                weight: 7.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case '19158':
+                    return {
+                pane: 'pane_Voiesfinales_1',
+                opacity: 1,
+                color: 'rgba(140,215,237,1.0)',
+                dashArray: '',
+                lineCap: 'round',
+                lineJoin: 'round',
+                weight: 7.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case '19159':
+                    return {
+                pane: 'pane_Voiesfinales_1',
+                opacity: 1,
+                color: 'rgba(140,215,237,1.0)',
+                dashArray: '',
+                lineCap: 'round',
+                lineJoin: 'round',
+                weight: 7.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case '19160':
+                    return {
+                pane: 'pane_Voiesfinales_1',
+                opacity: 1,
+                color: 'rgba(210,158,14,1.0)',
+                dashArray: '',
+                lineCap: 'round',
+                lineJoin: 'round',
+                weight: 7.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case '19161':
+                    return {
+                pane: 'pane_Voiesfinales_1',
+                opacity: 1,
+                color: 'rgba(86,92,211,1.0)',
+                dashArray: '',
+                lineCap: 'round',
+                lineJoin: 'round',
+                weight: 7.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case '19163':
+                    return {
+                pane: 'pane_Voiesfinales_1',
+                opacity: 1,
+                color: 'rgba(113,175,201,1.0)',
+                dashArray: '',
+                lineCap: 'round',
+                lineJoin: 'round',
+                weight: 7.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case '19164':
+                    return {
+                pane: 'pane_Voiesfinales_1',
+                opacity: 1,
+                color: 'rgba(34,182,211,1.0)',
+                dashArray: '',
+                lineCap: 'round',
+                lineJoin: 'round',
+                weight: 7.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case '19165':
+                    return {
+                pane: 'pane_Voiesfinales_1',
+                opacity: 1,
+                color: 'rgba(64,36,224,1.0)',
+                dashArray: '',
+                lineCap: 'round',
+                lineJoin: 'round',
+                weight: 7.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case '19166':
+                    return {
+                pane: 'pane_Voiesfinales_1',
+                opacity: 1,
+                color: 'rgba(41,214,107,1.0)',
+                dashArray: '',
+                lineCap: 'round',
+                lineJoin: 'round',
+                weight: 7.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case '19168':
+                    return {
+                pane: 'pane_Voiesfinales_1',
+                opacity: 1,
+                color: 'rgba(41,214,107,1.0)',
+                dashArray: '',
+                lineCap: 'round',
+                lineJoin: 'round',
+                weight: 7.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case '19169':
+                    return {
+                pane: 'pane_Voiesfinales_1',
+                opacity: 1,
+                color: 'rgba(226,77,179,1.0)',
+                dashArray: '',
+                lineCap: 'round',
+                lineJoin: 'round',
+                weight: 7.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case '19170':
+                    return {
+                pane: 'pane_Voiesfinales_1',
+                opacity: 1,
+                color: 'rgba(110,191,238,1.0)',
+                dashArray: '',
+                lineCap: 'round',
+                lineJoin: 'round',
+                weight: 7.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case '19171':
+                    return {
+                pane: 'pane_Voiesfinales_1',
+                opacity: 1,
+                color: 'rgba(213,34,67,1.0)',
+                dashArray: '',
+                lineCap: 'round',
+                lineJoin: 'round',
+                weight: 7.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case '19172':
+                    return {
+                pane: 'pane_Voiesfinales_1',
+                opacity: 1,
+                color: 'rgba(108,123,221,1.0)',
+                dashArray: '',
+                lineCap: 'round',
+                lineJoin: 'round',
+                weight: 7.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case '19173':
+                    return {
+                pane: 'pane_Voiesfinales_1',
+                opacity: 1,
+                color: 'rgba(200,30,135,1.0)',
+                dashArray: '',
+                lineCap: 'round',
+                lineJoin: 'round',
+                weight: 7.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case '19174':
+                    return {
+                pane: 'pane_Voiesfinales_1',
+                opacity: 1,
+                color: 'rgba(142,24,227,1.0)',
+                dashArray: '',
+                lineCap: 'round',
+                lineJoin: 'round',
+                weight: 7.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case '19180':
+                    return {
+                pane: 'pane_Voiesfinales_1',
+                opacity: 1,
+                color: 'rgba(73,239,170,1.0)',
+                dashArray: '',
+                lineCap: 'round',
+                lineJoin: 'round',
+                weight: 7.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case '19181':
+                    return {
+                pane: 'pane_Voiesfinales_1',
+                opacity: 1,
+                color: 'rgba(200,71,170,1.0)',
+                dashArray: '',
+                lineCap: 'round',
+                lineJoin: 'round',
+                weight: 7.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case '19183':
+                    return {
+                pane: 'pane_Voiesfinales_1',
+                opacity: 1,
+                color: 'rgba(182,211,113,1.0)',
+                dashArray: '',
+                lineCap: 'round',
+                lineJoin: 'round',
+                weight: 7.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case '19184':
+                    return {
+                pane: 'pane_Voiesfinales_1',
+                opacity: 1,
+                color: 'rgba(60,210,23,1.0)',
+                dashArray: '',
+                lineCap: 'round',
+                lineJoin: 'round',
+                weight: 7.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case '19189':
+                    return {
+                pane: 'pane_Voiesfinales_1',
+                opacity: 1,
+                color: 'rgba(204,110,121,1.0)',
+                dashArray: '',
+                lineCap: 'round',
+                lineJoin: 'round',
+                weight: 7.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case '19190':
+                    return {
+                pane: 'pane_Voiesfinales_1',
+                opacity: 1,
+                color: 'rgba(227,209,125,1.0)',
+                dashArray: '',
+                lineCap: 'round',
+                lineJoin: 'round',
+                weight: 7.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case '19191':
+                    return {
+                pane: 'pane_Voiesfinales_1',
+                opacity: 1,
+                color: 'rgba(233,144,126,1.0)',
+                dashArray: '',
+                lineCap: 'round',
+                lineJoin: 'round',
+                weight: 7.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case '19192':
+                    return {
+                pane: 'pane_Voiesfinales_1',
+                opacity: 1,
+                color: 'rgba(233,144,126,1.0)',
+                dashArray: '',
+                lineCap: 'round',
+                lineJoin: 'round',
+                weight: 7.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case '19193':
+                    return {
+                pane: 'pane_Voiesfinales_1',
+                opacity: 1,
+                color: 'rgba(215,151,110,1.0)',
+                dashArray: '',
+                lineCap: 'round',
+                lineJoin: 'round',
+                weight: 7.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case '19194':
+                    return {
+                pane: 'pane_Voiesfinales_1',
+                opacity: 1,
+                color: 'rgba(230,51,150,1.0)',
+                dashArray: '',
+                lineCap: 'round',
+                lineJoin: 'round',
+                weight: 7.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case '19195':
+                    return {
+                pane: 'pane_Voiesfinales_1',
+                opacity: 1,
+                color: 'rgba(86,74,217,1.0)',
+                dashArray: '',
+                lineCap: 'round',
+                lineJoin: 'round',
+                weight: 7.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case '19199':
+                    return {
+                pane: 'pane_Voiesfinales_1',
+                opacity: 1,
+                color: 'rgba(196,32,236,1.0)',
+                dashArray: '',
+                lineCap: 'round',
+                lineJoin: 'round',
+                weight: 7.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case '19200':
+                    return {
+                pane: 'pane_Voiesfinales_1',
+                opacity: 1,
+                color: 'rgba(107,221,198,1.0)',
+                dashArray: '',
+                lineCap: 'round',
+                lineJoin: 'round',
+                weight: 7.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case '19204':
+                    return {
+                pane: 'pane_Voiesfinales_1',
+                opacity: 1,
+                color: 'rgba(197,88,202,1.0)',
+                dashArray: '',
+                lineCap: 'round',
+                lineJoin: 'round',
+                weight: 7.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case '19205':
+                    return {
+                pane: 'pane_Voiesfinales_1',
+                opacity: 1,
+                color: 'rgba(78,209,146,1.0)',
+                dashArray: '',
+                lineCap: 'round',
+                lineJoin: 'round',
+                weight: 7.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case '19206':
+                    return {
+                pane: 'pane_Voiesfinales_1',
+                opacity: 1,
+                color: 'rgba(136,113,209,1.0)',
+                dashArray: '',
+                lineCap: 'round',
+                lineJoin: 'round',
+                weight: 7.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case '19207':
+                    return {
+                pane: 'pane_Voiesfinales_1',
+                opacity: 1,
+                color: 'rgba(207,139,36,1.0)',
+                dashArray: '',
+                lineCap: 'round',
+                lineJoin: 'round',
+                weight: 7.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case '19208':
+                    return {
+                pane: 'pane_Voiesfinales_1',
+                opacity: 1,
+                color: 'rgba(220,72,80,1.0)',
+                dashArray: '',
+                lineCap: 'round',
+                lineJoin: 'round',
+                weight: 7.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case '19210':
+                    return {
+                pane: 'pane_Voiesfinales_1',
+                opacity: 1,
+                color: 'rgba(165,240,45,1.0)',
+                dashArray: '',
+                lineCap: 'round',
+                lineJoin: 'round',
+                weight: 7.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case '19211':
+                    return {
+                pane: 'pane_Voiesfinales_1',
+                opacity: 1,
+                color: 'rgba(238,227,138,1.0)',
+                dashArray: '',
+                lineCap: 'round',
+                lineJoin: 'round',
+                weight: 7.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case '19212':
+                    return {
+                pane: 'pane_Voiesfinales_1',
+                opacity: 1,
+                color: 'rgba(137,231,153,1.0)',
+                dashArray: '',
+                lineCap: 'round',
+                lineJoin: 'round',
+                weight: 7.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case '19213':
+                    return {
+                pane: 'pane_Voiesfinales_1',
+                opacity: 1,
+                color: 'rgba(54,200,98,1.0)',
+                dashArray: '',
+                lineCap: 'round',
+                lineJoin: 'round',
+                weight: 7.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case '19215':
+                    return {
+                pane: 'pane_Voiesfinales_1',
+                opacity: 1,
+                color: 'rgba(118,49,207,1.0)',
+                dashArray: '',
+                lineCap: 'round',
+                lineJoin: 'round',
+                weight: 7.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case '19216':
+                    return {
+                pane: 'pane_Voiesfinales_1',
+                opacity: 1,
+                color: 'rgba(229,139,220,1.0)',
+                dashArray: '',
+                lineCap: 'round',
+                lineJoin: 'round',
+                weight: 7.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case '19218':
+                    return {
+                pane: 'pane_Voiesfinales_1',
+                opacity: 1,
+                color: 'rgba(50,197,210,1.0)',
+                dashArray: '',
+                lineCap: 'round',
+                lineJoin: 'round',
+                weight: 7.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case '19220':
+                    return {
+                pane: 'pane_Voiesfinales_1',
+                opacity: 1,
+                color: 'rgba(19,203,22,1.0)',
+                dashArray: '',
+                lineCap: 'round',
+                lineJoin: 'round',
+                weight: 7.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case '19222':
+                    return {
+                pane: 'pane_Voiesfinales_1',
+                opacity: 1,
+                color: 'rgba(228,125,15,1.0)',
+                dashArray: '',
+                lineCap: 'round',
+                lineJoin: 'round',
+                weight: 7.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case '19224':
+                    return {
+                pane: 'pane_Voiesfinales_1',
+                opacity: 1,
+                color: 'rgba(201,140,112,1.0)',
+                dashArray: '',
+                lineCap: 'round',
+                lineJoin: 'round',
+                weight: 7.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case '19225':
+                    return {
+                pane: 'pane_Voiesfinales_1',
+                opacity: 1,
+                color: 'rgba(208,152,106,1.0)',
+                dashArray: '',
+                lineCap: 'round',
+                lineJoin: 'round',
+                weight: 7.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case '19226':
+                    return {
+                pane: 'pane_Voiesfinales_1',
+                opacity: 1,
+                color: 'rgba(119,239,129,1.0)',
+                dashArray: '',
+                lineCap: 'round',
+                lineJoin: 'round',
+                weight: 7.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case '19227':
+                    return {
+                pane: 'pane_Voiesfinales_1',
+                opacity: 1,
+                color: 'rgba(107,224,48,1.0)',
+                dashArray: '',
+                lineCap: 'round',
+                lineJoin: 'round',
+                weight: 7.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case '19228':
+                    return {
+                pane: 'pane_Voiesfinales_1',
+                opacity: 1,
+                color: 'rgba(205,89,54,1.0)',
+                dashArray: '',
+                lineCap: 'round',
+                lineJoin: 'round',
+                weight: 7.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case '19229':
+                    return {
+                pane: 'pane_Voiesfinales_1',
+                opacity: 1,
+                color: 'rgba(205,89,54,1.0)',
+                dashArray: '',
+                lineCap: 'round',
+                lineJoin: 'round',
+                weight: 7.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case '19230':
+                    return {
+                pane: 'pane_Voiesfinales_1',
+                opacity: 1,
+                color: 'rgba(93,234,74,1.0)',
+                dashArray: '',
+                lineCap: 'round',
+                lineJoin: 'round',
+                weight: 7.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case '19231':
+                    return {
+                pane: 'pane_Voiesfinales_1',
+                opacity: 1,
+                color: 'rgba(28,224,116,1.0)',
+                dashArray: '',
+                lineCap: 'round',
+                lineJoin: 'round',
+                weight: 7.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case '19234':
+                    return {
+                pane: 'pane_Voiesfinales_1',
+                opacity: 1,
+                color: 'rgba(28,224,116,1.0)',
+                dashArray: '',
+                lineCap: 'round',
+                lineJoin: 'round',
+                weight: 7.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case '19235':
+                    return {
+                pane: 'pane_Voiesfinales_1',
+                opacity: 1,
+                color: 'rgba(180,71,219,1.0)',
+                dashArray: '',
+                lineCap: 'round',
+                lineJoin: 'round',
+                weight: 7.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case '19267':
+                    return {
+                pane: 'pane_Voiesfinales_1',
+                opacity: 1,
+                color: 'rgba(203,224,13,1.0)',
+                dashArray: '',
+                lineCap: 'round',
+                lineJoin: 'round',
+                weight: 7.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case '19269':
+                    return {
+                pane: 'pane_Voiesfinales_1',
+                opacity: 1,
+                color: 'rgba(232,26,81,1.0)',
+                dashArray: '',
+                lineCap: 'round',
+                lineJoin: 'round',
+                weight: 7.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case '19308':
+                    return {
+                pane: 'pane_Voiesfinales_1',
+                opacity: 1,
+                color: 'rgba(207,26,110,1.0)',
+                dashArray: '',
+                lineCap: 'round',
+                lineJoin: 'round',
+                weight: 7.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case '19311':
+                    return {
+                pane: 'pane_Voiesfinales_1',
+                opacity: 1,
+                color: 'rgba(111,218,72,1.0)',
+                dashArray: '',
+                lineCap: 'round',
+                lineJoin: 'round',
+                weight: 7.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case '19628':
+                    return {
+                pane: 'pane_Voiesfinales_1',
+                opacity: 1,
+                color: 'rgba(109,230,224,1.0)',
+                dashArray: '',
+                lineCap: 'round',
+                lineJoin: 'round',
+                weight: 7.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case '19629':
+                    return {
+                pane: 'pane_Voiesfinales_1',
+                opacity: 1,
+                color: 'rgba(96,223,189,1.0)',
+                dashArray: '',
+                lineCap: 'round',
+                lineJoin: 'round',
+                weight: 7.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case '19630':
+                    return {
+                pane: 'pane_Voiesfinales_1',
+                opacity: 1,
+                color: 'rgba(31,97,220,1.0)',
+                dashArray: '',
+                lineCap: 'round',
+                lineJoin: 'round',
+                weight: 7.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case '19631':
+                    return {
+                pane: 'pane_Voiesfinales_1',
+                opacity: 1,
+                color: 'rgba(179,213,64,1.0)',
+                dashArray: '',
+                lineCap: 'round',
+                lineJoin: 'round',
+                weight: 7.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case '19633':
+                    return {
+                pane: 'pane_Voiesfinales_1',
+                opacity: 1,
+                color: 'rgba(101,208,30,1.0)',
+                dashArray: '',
+                lineCap: 'round',
+                lineJoin: 'round',
+                weight: 7.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case '19634':
+                    return {
+                pane: 'pane_Voiesfinales_1',
+                opacity: 1,
+                color: 'rgba(90,113,204,1.0)',
+                dashArray: '',
+                lineCap: 'round',
+                lineJoin: 'round',
+                weight: 7.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case '19636':
+                    return {
+                pane: 'pane_Voiesfinales_1',
+                opacity: 1,
+                color: 'rgba(38,109,209,1.0)',
+                dashArray: '',
+                lineCap: 'round',
+                lineJoin: 'round',
+                weight: 7.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case '19638':
+                    return {
+                pane: 'pane_Voiesfinales_1',
+                opacity: 1,
+                color: 'rgba(46,136,232,1.0)',
+                dashArray: '',
+                lineCap: 'round',
+                lineJoin: 'round',
+                weight: 7.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case '20874':
+                    return {
+                pane: 'pane_Voiesfinales_1',
+                opacity: 1,
+                color: 'rgba(195,42,218,1.0)',
+                dashArray: '',
+                lineCap: 'round',
+                lineJoin: 'round',
+                weight: 7.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case '20877':
+                    return {
+                pane: 'pane_Voiesfinales_1',
+                opacity: 1,
+                color: 'rgba(219,160,43,1.0)',
+                dashArray: '',
+                lineCap: 'round',
+                lineJoin: 'round',
+                weight: 7.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case '20878':
+                    return {
+                pane: 'pane_Voiesfinales_1',
+                opacity: 1,
+                color: 'rgba(212,50,115,1.0)',
+                dashArray: '',
+                lineCap: 'round',
+                lineJoin: 'round',
+                weight: 7.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case '21543':
+                    return {
+                pane: 'pane_Voiesfinales_1',
+                opacity: 1,
+                color: 'rgba(213,208,104,1.0)',
+                dashArray: '',
+                lineCap: 'round',
+                lineJoin: 'round',
+                weight: 7.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case '21801':
+                    return {
+                pane: 'pane_Voiesfinales_1',
+                opacity: 1,
+                color: 'rgba(143,70,211,1.0)',
+                dashArray: '',
+                lineCap: 'round',
+                lineJoin: 'round',
+                weight: 7.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case '21802':
+                    return {
+                pane: 'pane_Voiesfinales_1',
+                opacity: 1,
+                color: 'rgba(114,239,198,1.0)',
+                dashArray: '',
+                lineCap: 'round',
+                lineJoin: 'round',
+                weight: 7.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case '21803':
+                    return {
+                pane: 'pane_Voiesfinales_1',
+                opacity: 1,
+                color: 'rgba(96,202,204,1.0)',
+                dashArray: '',
+                lineCap: 'round',
+                lineJoin: 'round',
+                weight: 7.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case '21804':
+                    return {
+                pane: 'pane_Voiesfinales_1',
+                opacity: 1,
+                color: 'rgba(165,95,202,1.0)',
+                dashArray: '',
+                lineCap: 'round',
+                lineJoin: 'round',
+                weight: 7.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case '4499':
+                    return {
+                pane: 'pane_Voiesfinales_1',
+                opacity: 1,
+                color: 'rgba(127,215,20,1.0)',
+                dashArray: '',
+                lineCap: 'round',
+                lineJoin: 'round',
+                weight: 7.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case '4511':
+                    return {
+                pane: 'pane_Voiesfinales_1',
+                opacity: 1,
+                color: 'rgba(210,111,100,1.0)',
+                dashArray: '',
+                lineCap: 'round',
+                lineJoin: 'round',
+                weight: 7.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case '812':
+                    return {
+                pane: 'pane_Voiesfinales_1',
+                opacity: 1,
+                color: 'rgba(217,218,122,1.0)',
+                dashArray: '',
+                lineCap: 'round',
+                lineJoin: 'round',
+                weight: 7.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case '814':
+                    return {
+                pane: 'pane_Voiesfinales_1',
+                opacity: 1,
+                color: 'rgba(228,120,156,1.0)',
+                dashArray: '',
+                lineCap: 'round',
+                lineJoin: 'round',
+                weight: 7.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case '8968':
+                    return {
+                pane: 'pane_Voiesfinales_1',
+                opacity: 1,
+                color: 'rgba(50,47,238,1.0)',
+                dashArray: '',
+                lineCap: 'round',
+                lineJoin: 'round',
+                weight: 7.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                default:
+                    return {
+                pane: 'pane_Voiesfinales_1',
+                opacity: 1,
+                color: 'rgba(109,42,224,1.0)',
+                dashArray: '',
+                lineCap: 'round',
+                lineJoin: 'round',
+                weight: 7.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+            }
+        }
+        function style_Voiesfinales_1_2(feature) {
+            switch(String(feature.properties['clef_prima'])) {
+                case '19149':
+                    return {
+                pane: 'pane_Voiesfinales_1',
+                interactive: true,
+            }
+                    break;
+                case '19151':
+                    return {
+                pane: 'pane_Voiesfinales_1',
+                interactive: true,
+            }
+                    break;
+                case '19152':
+                    return {
+                pane: 'pane_Voiesfinales_1',
+                interactive: true,
+            }
+                    break;
+                case '19153':
+                    return {
+                pane: 'pane_Voiesfinales_1',
+                interactive: true,
+            }
+                    break;
+                case '19154':
+                    return {
+                pane: 'pane_Voiesfinales_1',
+                interactive: true,
+            }
+                    break;
+                case '19157':
+                    return {
+                pane: 'pane_Voiesfinales_1',
+                interactive: true,
+            }
+                    break;
+                case '19158':
+                    return {
+                pane: 'pane_Voiesfinales_1',
+                interactive: true,
+            }
+                    break;
+                case '19159':
+                    return {
+                pane: 'pane_Voiesfinales_1',
+                interactive: true,
+            }
+                    break;
+                case '19160':
+                    return {
+                pane: 'pane_Voiesfinales_1',
+                interactive: true,
+            }
+                    break;
+                case '19161':
+                    return {
+                pane: 'pane_Voiesfinales_1',
+                interactive: true,
+            }
+                    break;
+                case '19163':
+                    return {
+                pane: 'pane_Voiesfinales_1',
+                interactive: true,
+            }
+                    break;
+                case '19164':
+                    return {
+                pane: 'pane_Voiesfinales_1',
+                interactive: true,
+            }
+                    break;
+                case '19165':
+                    return {
+                pane: 'pane_Voiesfinales_1',
+                interactive: true,
+            }
+                    break;
+                case '19166':
+                    return {
+                pane: 'pane_Voiesfinales_1',
+                interactive: true,
+            }
+                    break;
+                case '19168':
+                    return {
+                pane: 'pane_Voiesfinales_1',
+                interactive: true,
+            }
+                    break;
+                case '19169':
+                    return {
+                pane: 'pane_Voiesfinales_1',
+                interactive: true,
+            }
+                    break;
+                case '19170':
+                    return {
+                pane: 'pane_Voiesfinales_1',
+                interactive: true,
+            }
+                    break;
+                case '19171':
+                    return {
+                pane: 'pane_Voiesfinales_1',
+                interactive: true,
+            }
+                    break;
+                case '19172':
+                    return {
+                pane: 'pane_Voiesfinales_1',
+                interactive: true,
+            }
+                    break;
+                case '19173':
+                    return {
+                pane: 'pane_Voiesfinales_1',
+                interactive: true,
+            }
+                    break;
+                case '19174':
+                    return {
+                pane: 'pane_Voiesfinales_1',
+                interactive: true,
+            }
+                    break;
+                case '19180':
+                    return {
+                pane: 'pane_Voiesfinales_1',
+                interactive: true,
+            }
+                    break;
+                case '19181':
+                    return {
+                pane: 'pane_Voiesfinales_1',
+                interactive: true,
+            }
+                    break;
+                case '19183':
+                    return {
+                pane: 'pane_Voiesfinales_1',
+                interactive: true,
+            }
+                    break;
+                case '19184':
+                    return {
+                pane: 'pane_Voiesfinales_1',
+                interactive: true,
+            }
+                    break;
+                case '19189':
+                    return {
+                pane: 'pane_Voiesfinales_1',
+                interactive: true,
+            }
+                    break;
+                case '19190':
+                    return {
+                pane: 'pane_Voiesfinales_1',
+                interactive: true,
+            }
+                    break;
+                case '19191':
+                    return {
+                pane: 'pane_Voiesfinales_1',
+                interactive: true,
+            }
+                    break;
+                case '19192':
+                    return {
+                pane: 'pane_Voiesfinales_1',
+                interactive: true,
+            }
+                    break;
+                case '19193':
+                    return {
+                pane: 'pane_Voiesfinales_1',
+                interactive: true,
+            }
+                    break;
+                case '19194':
+                    return {
+                pane: 'pane_Voiesfinales_1',
+                interactive: true,
+            }
+                    break;
+                case '19195':
+                    return {
+                pane: 'pane_Voiesfinales_1',
+                interactive: true,
+            }
+                    break;
+                case '19199':
+                    return {
+                pane: 'pane_Voiesfinales_1',
+                interactive: true,
+            }
+                    break;
+                case '19200':
+                    return {
+                pane: 'pane_Voiesfinales_1',
+                interactive: true,
+            }
+                    break;
+                case '19204':
+                    return {
+                pane: 'pane_Voiesfinales_1',
+                interactive: true,
+            }
+                    break;
+                case '19205':
+                    return {
+                pane: 'pane_Voiesfinales_1',
+                interactive: true,
+            }
+                    break;
+                case '19206':
+                    return {
+                pane: 'pane_Voiesfinales_1',
+                interactive: true,
+            }
+                    break;
+                case '19207':
+                    return {
+                pane: 'pane_Voiesfinales_1',
+                interactive: true,
+            }
+                    break;
+                case '19208':
+                    return {
+                pane: 'pane_Voiesfinales_1',
+                interactive: true,
+            }
+                    break;
+                case '19210':
+                    return {
+                pane: 'pane_Voiesfinales_1',
+                interactive: true,
+            }
+                    break;
+                case '19211':
+                    return {
+                pane: 'pane_Voiesfinales_1',
+                interactive: true,
+            }
+                    break;
+                case '19212':
+                    return {
+                pane: 'pane_Voiesfinales_1',
+                interactive: true,
+            }
+                    break;
+                case '19213':
+                    return {
+                pane: 'pane_Voiesfinales_1',
+                interactive: true,
+            }
+                    break;
+                case '19215':
+                    return {
+                pane: 'pane_Voiesfinales_1',
+                interactive: true,
+            }
+                    break;
+                case '19216':
+                    return {
+                pane: 'pane_Voiesfinales_1',
+                interactive: true,
+            }
+                    break;
+                case '19218':
+                    return {
+                pane: 'pane_Voiesfinales_1',
+                interactive: true,
+            }
+                    break;
+                case '19220':
+                    return {
+                pane: 'pane_Voiesfinales_1',
+                interactive: true,
+            }
+                    break;
+                case '19222':
+                    return {
+                pane: 'pane_Voiesfinales_1',
+                interactive: true,
+            }
+                    break;
+                case '19224':
+                    return {
+                pane: 'pane_Voiesfinales_1',
+                interactive: true,
+            }
+                    break;
+                case '19225':
+                    return {
+                pane: 'pane_Voiesfinales_1',
+                interactive: true,
+            }
+                    break;
+                case '19226':
+                    return {
+                pane: 'pane_Voiesfinales_1',
+                interactive: true,
+            }
+                    break;
+                case '19227':
+                    return {
+                pane: 'pane_Voiesfinales_1',
+                interactive: true,
+            }
+                    break;
+                case '19228':
+                    return {
+                pane: 'pane_Voiesfinales_1',
+                interactive: true,
+            }
+                    break;
+                case '19229':
+                    return {
+                pane: 'pane_Voiesfinales_1',
+                interactive: true,
+            }
+                    break;
+                case '19230':
+                    return {
+                pane: 'pane_Voiesfinales_1',
+                interactive: true,
+            }
+                    break;
+                case '19231':
+                    return {
+                pane: 'pane_Voiesfinales_1',
+                interactive: true,
+            }
+                    break;
+                case '19234':
+                    return {
+                pane: 'pane_Voiesfinales_1',
+                interactive: true,
+            }
+                    break;
+                case '19235':
+                    return {
+                pane: 'pane_Voiesfinales_1',
+                interactive: true,
+            }
+                    break;
+                case '19267':
+                    return {
+                pane: 'pane_Voiesfinales_1',
+                interactive: true,
+            }
+                    break;
+                case '19269':
+                    return {
+                pane: 'pane_Voiesfinales_1',
+                interactive: true,
+            }
+                    break;
+                case '19308':
+                    return {
+                pane: 'pane_Voiesfinales_1',
+                interactive: true,
+            }
+                    break;
+                case '19311':
+                    return {
+                pane: 'pane_Voiesfinales_1',
+                interactive: true,
+            }
+                    break;
+                case '19628':
+                    return {
+                pane: 'pane_Voiesfinales_1',
+                interactive: true,
+            }
+                    break;
+                case '19629':
+                    return {
+                pane: 'pane_Voiesfinales_1',
+                interactive: true,
+            }
+                    break;
+                case '19630':
+                    return {
+                pane: 'pane_Voiesfinales_1',
+                interactive: true,
+            }
+                    break;
+                case '19631':
+                    return {
+                pane: 'pane_Voiesfinales_1',
+                interactive: true,
+            }
+                    break;
+                case '19633':
+                    return {
+                pane: 'pane_Voiesfinales_1',
+                interactive: true,
+            }
+                    break;
+                case '19634':
+                    return {
+                pane: 'pane_Voiesfinales_1',
+                interactive: true,
+            }
+                    break;
+                case '19636':
+                    return {
+                pane: 'pane_Voiesfinales_1',
+                interactive: true,
+            }
+                    break;
+                case '19638':
+                    return {
+                pane: 'pane_Voiesfinales_1',
+                interactive: true,
+            }
+                    break;
+                case '20874':
+                    return {
+                pane: 'pane_Voiesfinales_1',
+                interactive: true,
+            }
+                    break;
+                case '20877':
+                    return {
+                pane: 'pane_Voiesfinales_1',
+                interactive: true,
+            }
+                    break;
+                case '20878':
+                    return {
+                pane: 'pane_Voiesfinales_1',
+                interactive: true,
+            }
+                    break;
+                case '21543':
+                    return {
+                pane: 'pane_Voiesfinales_1',
+                interactive: true,
+            }
+                    break;
+                case '21801':
+                    return {
+                pane: 'pane_Voiesfinales_1',
+                interactive: true,
+            }
+                    break;
+                case '21802':
+                    return {
+                pane: 'pane_Voiesfinales_1',
+                interactive: true,
+            }
+                    break;
+                case '21803':
+                    return {
+                pane: 'pane_Voiesfinales_1',
+                interactive: true,
+            }
+                    break;
+                case '21804':
+                    return {
+                pane: 'pane_Voiesfinales_1',
+                interactive: true,
+            }
+                    break;
+                case '4499':
+                    return {
+                pane: 'pane_Voiesfinales_1',
+                interactive: true,
+            }
+                    break;
+                case '4511':
+                    return {
+                pane: 'pane_Voiesfinales_1',
+                interactive: true,
+            }
+                    break;
+                case '812':
+                    return {
+                pane: 'pane_Voiesfinales_1',
+                interactive: true,
+            }
+                    break;
+                case '814':
+                    return {
+                pane: 'pane_Voiesfinales_1',
+                interactive: true,
+            }
+                    break;
+                case '8968':
+                    return {
+                pane: 'pane_Voiesfinales_1',
+                interactive: true,
+            }
+                    break;
+                default:
+                    return {
+                pane: 'pane_Voiesfinales_1',
+                interactive: true,
+            }
+                    break;
+            }
+        }
+        map.createPane('pane_Voiesfinales_1');
+        map.getPane('pane_Voiesfinales_1').style.zIndex = 401;
+        map.getPane('pane_Voiesfinales_1').style['mix-blend-mode'] = 'normal';
+        var layer_Voiesfinales_1 = new L.geoJson.multiStyle(json_Voiesfinales_1, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_Voiesfinales_1',
+            layerName: 'layer_Voiesfinales_1',
+            pane: 'pane_Voiesfinales_1',
+            onEachFeature: pop_Voiesfinales_1,
+            styles: [style_Voiesfinales_1_0,style_Voiesfinales_1_1,style_Voiesfinales_1_2,]
+        });
+        bounds_group.addLayer(layer_Voiesfinales_1);
+        map.addLayer(layer_Voiesfinales_1);
+        function pop_panneaudesignalisation_Voiesfinales_2(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['id'] !== null ? Autolinker.link(feature.properties['id'].toLocaleString(), {truncate: {length: 30, location: 'smart'}}) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['join_clef_'] !== null ? Autolinker.link(feature.properties['join_clef_'].toLocaleString(), {truncate: {length: 30, location: 'smart'}}) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['join_nom_c'] !== null ? Autolinker.link(feature.properties['join_nom_c'].toLocaleString(), {truncate: {length: 30, location: 'smart'}}) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['join_typol'] !== null ? Autolinker.link(feature.properties['join_typol'].toLocaleString(), {truncate: {length: 30, location: 'smart'}}) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['join_voie_'] !== null ? Autolinker.link(feature.properties['join_voie_'].toLocaleString(), {truncate: {length: 30, location: 'smart'}}) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['join_commu'] !== null ? Autolinker.link(feature.properties['join_commu'].toLocaleString(), {truncate: {length: 30, location: 'smart'}}) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['join_code_'] !== null ? Autolinker.link(feature.properties['join_code_'].toLocaleString(), {truncate: {length: 30, location: 'smart'}}) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['join_regim'] !== null ? Autolinker.link(feature.properties['join_regim'].toLocaleString(), {truncate: {length: 30, location: 'smart'}}) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['join_type_'] !== null ? Autolinker.link(feature.properties['join_type_'].toLocaleString(), {truncate: {length: 30, location: 'smart'}}) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['join_isige'] !== null ? Autolinker.link(feature.properties['join_isige'].toLocaleString(), {truncate: {length: 30, location: 'smart'}}) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['join_isi_1'] !== null ? Autolinker.link(feature.properties['join_isi_1'].toLocaleString(), {truncate: {length: 30, location: 'smart'}}) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['join__time'] !== null ? Autolinker.link(feature.properties['join__time'].toLocaleString(), {truncate: {length: 30, location: 'smart'}}) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['distance'] !== null ? Autolinker.link(feature.properties['distance'].toLocaleString(), {truncate: {length: 30, location: 'smart'}}) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_panneaudesignalisation_Voiesfinales_2_0() {
+            return {
+                pane: 'pane_panneaudesignalisation_Voiesfinales_2',
+        rotationAngle: 0.0,
+        rotationOrigin: 'center center',
+        icon: L.icon({
+            iconUrl: 'markers/poi_place_village.svg',
+            iconSize: [34.199999999999996, 34.199999999999996]
+        }),
+                interactive: true,
+            }
+        }
+        map.createPane('pane_panneaudesignalisation_Voiesfinales_2');
+        map.getPane('pane_panneaudesignalisation_Voiesfinales_2').style.zIndex = 402;
+        map.getPane('pane_panneaudesignalisation_Voiesfinales_2').style['mix-blend-mode'] = 'normal';
+        var layer_panneaudesignalisation_Voiesfinales_2 = new L.geoJson(json_panneaudesignalisation_Voiesfinales_2, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_panneaudesignalisation_Voiesfinales_2',
+            layerName: 'layer_panneaudesignalisation_Voiesfinales_2',
+            pane: 'pane_panneaudesignalisation_Voiesfinales_2',
+            onEachFeature: pop_panneaudesignalisation_Voiesfinales_2,
+            pointToLayer: function (feature, latlng) {
+                var context = {
+                    feature: feature,
+                    variables: {}
+                };
+                return L.marker(latlng, style_panneaudesignalisation_Voiesfinales_2_0(feature));
+            },
+        });
+        bounds_group.addLayer(layer_panneaudesignalisation_Voiesfinales_2);
+        map.addLayer(layer_panneaudesignalisation_Voiesfinales_2);
+        setBounds();
+        var i = 0;
+        layer_panneaudesignalisation_Voiesfinales_2.eachLayer(function(layer) {
+            var context = {
+                feature: layer.feature,
+                variables: {}
+            };
+            layer.bindTooltip((layer.feature.properties['join_nom_c'] !== null?String('<div style="color: #000000; font-size: 10pt; font-family: \'MS Shell Dlg 2\', sans-serif;">' + layer.feature.properties['join_nom_c']) + '</div>':''), {permanent: true, offset: [-0, -16], className: 'css_panneaudesignalisation_Voiesfinales_2'});
+            labels.push(layer);
+            totalMarkers += 1;
+              layer.added = true;
+              addLabel(layer, i);
+              i++;
+        });
+        resetLabels([layer_Voiesfinales_1,layer_panneaudesignalisation_Voiesfinales_2]);
+        map.on("zoomend", function(){
+            resetLabels([layer_Voiesfinales_1,layer_panneaudesignalisation_Voiesfinales_2]);
+        });
+        map.on("layeradd", function(){
+            resetLabels([layer_Voiesfinales_1,layer_panneaudesignalisation_Voiesfinales_2]);
+        });
+        map.on("layerremove", function(){
+            resetLabels([layer_Voiesfinales_1,layer_panneaudesignalisation_Voiesfinales_2]);
+        });
+        </script>
+    </body>
+</html>
